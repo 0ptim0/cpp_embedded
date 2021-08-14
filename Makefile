@@ -94,12 +94,16 @@ LDFLAGS = -specs=nano.specs -specs=nosys.specs -static $(MCUFLAGS) -Wl,--start-g
 
 .PHONY: dirs all clean flash erase
 
+full: clean all erase flash
+
 all: dirs $(PROJECT).bin $(PROJECT).asm
+
 
 dirs: ${OUTPATH}
 
 ${OUTPATH}:
 	mkdir -p ${OUTPATH}
+
 
 clean:
 	$(RM) $(OBJS) $(PROJECT).elf $(PROJECT).bin $(PROJECT).asm
